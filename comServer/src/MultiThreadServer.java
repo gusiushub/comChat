@@ -48,7 +48,7 @@ public class MultiThreadServer {
                 // монопоточную нить = сервер - MonoThreadClientHandler и тот
                 // продолжает общение от лица сервера
                 executeIt.execute(new MonoThreadClientHandler(client));
-                System.out.print("Соединение принято.");
+                System.out.println("Соединение принято.");
             }
             // закрытие пула нитей после завершения работы всех нитей
             executeIt.shutdown();

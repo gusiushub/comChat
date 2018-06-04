@@ -45,16 +45,16 @@ public class MonoThreadClientHandler implements Runnable {
 
                     // если кодовое слово получено то инициализируется закрытие
                     // серверной нити
-                    System.out.println("Client initialize connections suicide ...");
+                    System.out.println("Клиент инициализирует соединения самоубийством ...");
                     out.writeUTF("Server reply - " + entry + " - OK");
                     Thread.sleep(3000);
                     break;
                 }
                 // если условие окончания работы не верно - продолжаем работу -
                 // отправляем эхо обратно клиенту
-                System.out.println("Server try writing to channel");
-                out.writeUTF("Server reply - " + entry + " - OK");
-                System.out.println("Server Wrote message to clientDialog.");
+                System.out.println("Сервер попробовать запись в канал");
+                out.writeUTF("Ответ сервера - " + entry + " - OK");
+                System.out.println("Сервер написал сообщение в диалог клиента.");
                 // освобождаем буфер сетевых сообщений
                 out.flush();
                 // возвращаемся в началло для считывания нового сообщения
@@ -65,14 +65,14 @@ public class MonoThreadClientHandler implements Runnable {
             ////////////////////////////
 
             // если условие выхода - верно выключаем соединения
-            System.out.println("Client disconnected");
-            System.out.println("Closing connections & channels.");
+            System.out.println("Клиент отключен");
+            System.out.println("Закрытие соединений и каналов.");
             // закрываем сначала каналы сокета !
             in.close();
             out.close();
             // потом закрываем сокет общения с клиентом в нити моносервера
             clientDialog.close();
-            System.out.println("Closing connections & channels - DONE.");
+            System.out.println("Закрытие соединений и каналов - ГОТОВО.");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
